@@ -6,6 +6,7 @@
 #
 
 LOCAL_PATH := device/tecno/LH8n
+
 # Virtual A/B
 ENABLE_VIRTUAL_AB := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
