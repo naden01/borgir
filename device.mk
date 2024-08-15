@@ -18,7 +18,6 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 
 # A/B
 AB_OTA_UPDATER := true
-ENABLE_VIRTUAL_AB := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
