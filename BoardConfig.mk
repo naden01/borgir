@@ -92,6 +92,7 @@ BOARD_SUPER_PARTITION_SIZE := 9878425600 # TODO: Fix hardcoded value
 
 #dynamic partition bla bla
 BOARD_SUPER_PARTITION_GROUPS := main
+BOARD_USES_METADATA_PARTITION := true
 BOARD_MAIN_SIZE := 9122611200 # TODO: Fix hardcoded value
 BOARD_MAIN_PARTITION_LIST := \
     system \
