@@ -16,23 +16,20 @@ PRODUCT_TARGET_VNDK_VERSION := 31
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
 
+# Treble
+BOARD_VNDK_VERSION := current
+
 # A/B
 AB_OTA_UPDATER := true
+ENABLE_VIRTUAL_AB := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
-    gz \
     lk \
-    logo \
-    md1img \
     preloader \
     product \
-    scp \
-    spmfw \
-    sspm \
     system \
     system_ext \
-    tee \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor \
