@@ -10,10 +10,6 @@ LOCAL_PATH := device/tecno/LH8n
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Virtual A/B
-ENABLE_VIRTUAL_AB := true
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 31
 
@@ -22,6 +18,7 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 
 # A/B
 AB_OTA_UPDATER := true
+ENABLE_VIRTUAL_AB := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
