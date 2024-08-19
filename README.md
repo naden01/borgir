@@ -1,7 +1,7 @@
 # borgir
 pepek
 
-pova 5 pro
+pova 5 pro (LH8n)
 
 target : vendor_boot
 
