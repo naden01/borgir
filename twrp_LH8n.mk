@@ -15,19 +15,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# Configure launch_with_vendor_ramdisk.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-
 # Inherit some common Omni stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from TECNO-LH8n device
 $(call inherit-product, device/tecno/LH8n/device.mk)
 
-PRODUCT_DEVICE := LH8n
-PRODUCT_NAME := twrp_LH8n
+PRODUCT_DEVICE := twrp_LH8n
+PRODUCT_NAME := TECNO_LH8n
 PRODUCT_BRAND := TECNO
 PRODUCT_MODEL := TECNO LH8n
-PRODUCT_MANUFACTURER := tecno
+PRODUCT_MANUFACTURER := TECNO
 
 PRODUCT_GMS_CLIENTID_BASE := android-tecno
