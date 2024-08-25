@@ -10,6 +10,12 @@ LOCAL_PATH := device/tecno/LH8n
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# API
+PRODUCT_SHIPPING_API_LEVEL := 31
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 31
+
 # A/B
 AB_OTA_UPDATER := true
 ENABLE_VIRTUAL_AB := true
@@ -45,10 +51,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctrl
 
-PRODUCT_PACKAGES += \
-    bootctrl.mt6833 \
-    bootctrl.mt6833.recovery
-
 # Fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
@@ -58,6 +60,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.1
+
+# Keystore Hal
+PRODUCT_PACKAGES += \
+    android.system.keystore2
+
+# Security
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint \
+    android.hardware.security.secureclock \
+    android.hardware.security.sharedsecret
 
 # Update engine
 PRODUCT_PACKAGES += \
@@ -73,9 +89,5 @@ PRODUCT_PACKAGES += \
     mtk_plpath_utils \
     mtk_plpath_utils.recovery
 
-# Additional configs
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1
-
-TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.1
+# Hide Reflash TWRP
+PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
