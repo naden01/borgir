@@ -1,5 +1,4 @@
 # borgir
-pepek
 
 pova 5 pro (LH8n)
 
