@@ -10,6 +10,12 @@ LOCAL_PATH := device/tecno/LH8n
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# Hidl Service
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
 
@@ -19,15 +25,14 @@ PRODUCT_TARGET_VNDK_VERSION := 31
 # A/B
 AB_OTA_UPDATER := true
 ENABLE_VIRTUAL_AB := true
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     lk \
-    preloader \
     product \
     system \
     system_ext \
-    vbmeta \
     vbmeta_system \
     vbmeta_vendor \
     vendor \
