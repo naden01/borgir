@@ -10,11 +10,9 @@ LOCAL_PATH := device/tecno/LH8n
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Hidl Service
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
-
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH) 
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
@@ -25,7 +23,6 @@ PRODUCT_TARGET_VNDK_VERSION := 31
 # A/B
 AB_OTA_UPDATER := true
 ENABLE_VIRTUAL_AB := true
-TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
@@ -43,20 +40,38 @@ AB_OTA_PARTITIONS += \
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
+    FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=erofs \
+    POSTINSTALL_OPTIONAL_vendor=true
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-mtkimpl \
-    android.hardware.boot@1.2-mtkimpl.recovery
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery \
 
-PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery \
+    android.hardware.boot@1.2-service    
+
+PRODUCT_PACKAGES := \
+    bootctrl.mt6833 \
+    libgptutils \
+    libz \
+    libcutils
+
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier \
+    update_engine_sideload \
+    checkpoint_gc
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -67,15 +82,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
-
-# Update engine
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
-
-PRODUCT_PACKAGES_DEBUG += \
-    update_engine_client
 
 # MTK plpath utils
 PRODUCT_PACKAGES += \
