@@ -53,6 +53,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
     android.hardware.boot@1.2-impl.recovery \
+    android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
@@ -69,8 +70,7 @@ PRODUCT_PACKAGES += \
     cppreopts.sh \
     update_engine \
     update_verifier \
-    update_engine_sideload \
-    checkpoint_gc
+    update_engine_sideload
 
 # Fastbootd
 PRODUCT_PACKAGES += \
